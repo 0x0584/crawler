@@ -6,7 +6,7 @@
 #    By: archid- <archid-@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 17:53:57 by archid-           #+#    #+#              #
-#    Updated: 2020/02/10 17:53:58 by archid-          ###   ########.fr        #
+#    Updated: 2020/02/11 22:06:50 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,5 +28,27 @@
 * Technologies involved
 
 - Python 3.7.6
-- Scrapy
+- Scrapy 1.8.0
 - PyMongo
+
+* How to use
+
+create a virtual environment and install requirements
+
+#+BEGIN_SRC shell
+  $ python3 -m env .venv
+  $ source .venv/bin/activate		# disabled with deactivate
+  $ pip install -r requirements.txt
+#+END_SRC
+
+start the crawling
+
+#+BEGIN_SRC shell
+$ scrapy crawl crawler
+#+END_SRC
+
+* Notes
+
+This implementation works specifically on bbc.com, since it selects elements using css properties (which differ from website to another).
+
+/I might alter it later to work a bit more generally./

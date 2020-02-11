@@ -225,3 +225,4 @@ tags
 .vim
 
 # End of https://www.gitignore.io/api/linux,macos,emacs,python,vim
+/.venv/
