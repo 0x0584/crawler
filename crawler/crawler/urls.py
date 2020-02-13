@@ -6,7 +6,7 @@
 #    By: archid- <archid-@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 14:54:01 by archid-           #+#    #+#              #
-#    Updated: 2020/02/12 17:52:09 by archid-          ###   ########.fr        #
+#    Updated: 2020/02/13 02:35:57 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,6 @@ from main import views
 
 urlpatterns = [
     path('', views.index),
-    path('<str:title>', views.get_by_title),
-    path('<str:tag>', views.get_by_tag),
+    path('<str:word>', views.get_by_title),
+    path('<str:t>', views.get_by_tag),
 ]
