@@ -6,7 +6,7 @@
 #    By: archid- <archid-@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 17:53:57 by archid-           #+#    #+#              #
-#    Updated: 2020/02/11 22:06:50 by archid-          ###   ########.fr        #
+#    Updated: 2020/02/12 01:32:51 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 
 - State "IN-PROGRESS" from "TODO"       [2020-02-10 Mon 17:48]
 
-- [ ] Write an application to crawl articles on a news website such as [theguardian.com](http://theguardian.com) or [bbc.com](http://bbc.com/) using a crawler framework such as [Scrapy](http://scrapy.org). You can use a crawl framework of your choice and build the application in Python.
+- [X] Write an application to crawl articles on a news website such as [theguardian.com](http://theguardian.com) or [bbc.com](http://bbc.com/) using a crawler framework such as [Scrapy](http://scrapy.org). You can use a crawl framework of your choice and build the application in Python.
 
 - [ ] The application should cleanse the articles to obtain only information relevant to the news story, e.g. article text, author, headline, article url, etc. Use a framework such as Readability to cleanse the page of superfluous content such as advertising and HTML.
 
