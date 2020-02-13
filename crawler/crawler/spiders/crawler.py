@@ -6,7 +6,7 @@
 #    By: archid- <archid-@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 18:44:23 by archid-           #+#    #+#              #
-#    Updated: 2020/02/11 22:04:24 by archid-          ###   ########.fr        #
+#    Updated: 2020/02/13 22:41:10 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ from scrapy import Spider
 from scrapy.http.request import Request
 from urllib.parse import urljoin
 
-from .Article import Article
+from crawler.items import CrawlerItem
 from .ParseHelper import ParseHelper as Ph
 
 class CrawlerSpider(Spider):
@@ -32,6 +32,7 @@ class CrawlerSpider(Spider):
 
     # Parse an individual article
     def parseArticle(self, response):
+        article = CrawlerItem()
         url = response.url
         date = response.css(Ph.parseDatetime).get()
         author = response.css(Ph.parseAuthor).get()
@@ -43,8 +44,14 @@ class CrawlerSpider(Spider):
         # Also some articles have no author (e.g. News reports)
         if date and title and summary and body and tags:
             body.pop(0)   # the summary is the first paragraph in the body
-            article = Article(url, date, author, title, summary, body, tags)
-            article.dbInsert()
+            article['url'] = url
+            article['date'] = date
+            article['author'] = author
+            article['title'] = title
+            article['summary'] = summary
+            article['body'] = body
+            article['tags'] = tags
+        yield article
 
     # parses the response url and returns a list of all the found urls
     def prepare_urls(self, response):
