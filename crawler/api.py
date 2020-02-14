@@ -6,7 +6,7 @@
 #    By: archid- <archid-@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 00:54:32 by archid-           #+#    #+#              #
-#    Updated: 2020/02/14 04:36:30 by archid-          ###   ########.fr        #
+#    Updated: 2020/02/14 12:11:35 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ import schedule
 import json
 
 app     = Flask(__name__)
-conn    = MongoClient()
+conn    = MongoClient("mongodb+srv://crawler_ro:1234@clusterdb-ograc.azure.mongodb.net/crawler_db")
 db      = conn.crawler_db
 
 @app.errorhandler(404)

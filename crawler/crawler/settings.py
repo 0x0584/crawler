@@ -7,7 +7,7 @@
 #    By: archid- <archid-@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 23:25:11 by archid-           #+#    #+#              #
-#    Updated: 2020/02/13 23:25:17 by archid-          ###   ########.fr        #
+#    Updated: 2020/02/14 13:37:28 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ ROBOTSTXT_OBEY = True
 ITEM_PIPELINES = {
    'crawler.pipelines.CrawlerPipeline': 300,
 }
-MONGO_URI="mongodb://localhost:27017"
+MONGO_URI="mongodb+srv://crawler_rw:1234@clusterdb-ograc.azure.mongodb.net/crawler_db"
 MONGO_DATABASE="crawler_db"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
