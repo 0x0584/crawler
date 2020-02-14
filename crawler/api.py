@@ -6,7 +6,7 @@
 #    By: archid- <archid-@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 00:54:32 by archid-           #+#    #+#              #
-#    Updated: 2020/02/14 12:11:35 by archid-          ###   ########.fr        #
+#    Updated: 2020/02/14 15:29:03 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ db      = conn.crawler_db
 
 @app.errorhandler(404)
 def not_found(e):
-    return json_response({'error': str(e)}), 404
+    return json_response({'error': str(e)})
 
 def json_response(blob):
     response = app.response_class(
