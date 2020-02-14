@@ -7,7 +7,7 @@
 #    By: archid- <archid-@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 22:41:48 by archid-           #+#    #+#              #
-#    Updated: 2020/02/13 23:23:44 by archid-          ###   ########.fr        #
+#    Updated: 2020/02/14 03:01:07 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,6 @@ class CrawlerPipeline(object):
         self.client.close()
 
     def process_item(self, item, spider):
-        self.db[self.collection_name].update(dict(item), upsert=True)
+        self.db[self.collection_name].update(dict(item), dict(item), upsert=True)
         logging.debug("added to MongoDB")
         return item
