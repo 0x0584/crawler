@@ -7,14 +7,9 @@
 #    By: archid- <archid-@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 22:41:48 by archid-           #+#    #+#              #
-#    Updated: 2020/02/14 13:25:18 by archid-          ###   ########.fr        #
+#    Updated: 2020/02/14 16:20:07 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
 import logging
 import pymongo

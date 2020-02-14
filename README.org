@@ -6,49 +6,60 @@
 #    By: archid- <archid-@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 17:53:57 by archid-           #+#    #+#              #
-#    Updated: 2020/02/11 22:06:50 by archid-          ###   ########.fr        #
+#    Updated: 2020/02/14 16:32:28 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #+TITLE: Crawler
 #+AUTHOR: Anas Rchid
 
-* IN-PROGRESS Tasks
+* About
 
-- State "IN-PROGRESS" from "TODO"       [2020-02-10 Mon 17:48]
+This is a Data Engineering that consists of two things:
 
-- [ ] Write an application to crawl articles on a news website such as [theguardian.com](http://theguardian.com) or [bbc.com](http://bbc.com/) using a crawler framework such as [Scrapy](http://scrapy.org). You can use a crawl framework of your choice and build the application in Python.
+- Crawl a web site and extract articles, using Scarpy
+- Save those articles into a hosted Mongodb database, using Pymongo
+- Provide an API to get those articles from the database, using Flask
 
-- [ ] The application should cleanse the articles to obtain only information relevant to the news story, e.g. article text, author, headline, article url, etc. Use a framework such as Readability to cleanse the page of superfluous content such as advertising and HTML.
+#+begin_quote
+/Since the crawling is done based on CSS selection, it's obvious that not all sites have the same class. Thus, this works only for [[https://www.bbc.com/news][BBC]], but it could be easily adjusted by altering the ParseHelper class and changing the CSS properties./
+#+end_quote
 
-- [ ] Store the data in a hosted Mongo database, e.g. [MongoDB Atlas](https://www.mongodb.com/cloud/atlas), for subsequent search and retrieval. Ensure the URL of the article is included to enable comparison to the original.
+* The Solution
 
-- [ ] Write an API that provides access to the content in the mongo database. The user should be able to search for articles by keyword
+** Crawling the articles
 
-* Technologies involved
+#+begin_quote
+Scrapy is a python package that provides the necessary functionality to crawl website and process the crawled data.
+#+end_quote
 
-- Python 3.7.6
-- Scrapy 1.8.0
-- PyMongo
+The thing is, create a basic crawling /Item/ to hold the crawled data, then we create a custom /Spider/ to do the actual crawling. Then, we in the /Pipeline/, we insert each item into the /Mongodb/ database using /PyMongo/ driver.
+
+- The Item is a class that defines the basic fields of an Item, title and body
+- The Spider is class that defines how to =parse()= the website
+- The Pipeline is class that defines how to process the Item
+
+** The API
+
+Flask is a micro-framework to web applications. Each time we send one of the following requests, we get a JSON response. If no results are found, it returns nothing.
+
+- =/word/<str>= :: Fetch all the articles where their title contains the word =<str>=
+- =/tag/<tag>= :: Fetch all articles that contains the tag =<tag>=
+- =/text/<word>= :: Fetch all the articles where their bodies contains the word =<str>=
+- =/author/<author>= :: Fetch all the articles create by =<author>= (Not all articles do, like News)
+
+The Crawling run as a scheduled job by the server.
 
 * How to use
 
-create a virtual environment and install requirements
+Create a virtual environment and install requirements
 
 #+BEGIN_SRC shell
+  $ git clone https://github.com/0x0584/crawler.git
+  $ cd crawler
   $ python3 -m env .venv
-  $ source .venv/bin/activate		# disabled with deactivate
+  $ source .venv/bin/activate		      # disabled with deactivate
   $ pip install -r requirements.txt
+  $ cd crawler; python api.py flask start &
+  $ wget 127.0.0.1:5000/tag/foobar -O foobar.json
 #+END_SRC
-
-start the crawling
-
-#+BEGIN_SRC shell
-$ scrapy crawl crawler
-#+END_SRC
-
-* Notes
-
-This implementation works specifically on bbc.com, since it selects elements using css properties (which differ from website to another).
-
-/I might alter it later to work a bit more generally./
